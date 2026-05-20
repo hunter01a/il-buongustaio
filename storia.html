@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La nostra storia · Il Buongustaio</title>
+  <meta name="description" content="Venticinque anni in via Catani. La storia della famiglia Bindi, di Prato e del nostro restyling con Spazio29.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Italianno&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cipresso: #2E3D2F;
+      --oliva: #5A6B47;
+      --oro: #A8843C;
+      --oro-chiaro: #C9A862;
+      --pietra: #D9C9A8;
+      --avorio: #EFE6D2;
+      --panna: #F0EAD8;
+      --inchiostro: #1A1612;
+      --grafite: #3F3A33;
+      --polvere: #8B847A;
+      --linea-soft: rgba(168, 132, 60, 0.2);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--panna);
+      color: var(--inchiostro);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === Header sticky === */
+    .storia-header {
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--linea-soft);
+      position: sticky; top: 0;
+      background: rgba(240, 234, 216, 0.96);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    .storia-header .brand {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--inchiostro);
+      text-decoration: none;
+    }
+    .storia-header .brand-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--oro);
+      margin-left: 10px;
+    }
+    .storia-back {
+      background: transparent;
+      border: 1px solid var(--inchiostro);
+      padding: 10px 20px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--inchiostro);
+      text-decoration: none;
+      transition: all 200ms;
+    }
+    .storia-back:hover { background: var(--inchiostro); color: var(--panna); }
+
+    /* === HERO === */
+    .storia-hero {
+      padding: 80px 24px 60px;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 800ms 200ms forwards;
+    }
+    @media (min-width: 768px) { .storia-hero { padding: 140px 32px 100px; } }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .storia-hero .capitolo-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--oro);
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+    .storia-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      color: var(--inchiostro);
+      margin-bottom: 24px;
+    }
+    @media (min-width: 768px) { .storia-hero h1 { font-size: 96px; } }
+    @media (min-width: 1024px) { .storia-hero h1 { font-size: 132px; } }
+    .storia-hero h1 em {
+      font-style: italic;
+      color: var(--cipresso);
+      display: block;
+      font-size: 0.68em;
+      margin-top: 8px;
+    }
+    .storia-hero .sottotitolo {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--grafite);
+      margin-top: 24px;
+      line-height: 1.5;
+    }
+    @media (min-width: 768px) { .storia-hero .sottotitolo { font-size: 28px; } }
+
+    /* === SEZIONI ANIMATE === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 800ms ease, transform 800ms ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 900ms ease, transform 900ms ease;
+    }
+    .reveal-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 900ms ease, transform 900ms ease;
+    }
+    .reveal-right.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* === SEZIONE PRATO === */
+    .sezione-prato {
+      padding: 80px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid var(--linea-soft);
+    }
+    .sezione-prato .label-sezione {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--oro);
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+    .sezione-prato h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      color: var(--inchiostro);
+      margin-bottom: 18px;
+      line-height: 1.05;
+    }
+    @media (min-width: 768px) { .sezione-prato h2 { font-size: 72px; } }
+    .sezione-prato h2 em { font-style: italic; color: var(--cipresso); }
+    .sezione-prato .testo {
+      max-width: 720px;
+      margin: 0 auto;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      color: var(--grafite);
+      line-height: 1.7;
+      text-align: center;
+    }
+    @media (min-width: 768px) { .sezione-prato .testo { font-size: 22px; } }
+    .sezione-prato .testo p { margin-bottom: 20px; }
+    .sezione-prato .testo em { font-style: italic; color: var(--cipresso); }
+    .filetto-deco {
+      display: block;
+      width: 60px;
+      height: 4px;
+      border-top: 1px solid var(--oro);
+      border-bottom: 1px solid var(--oro);
+      margin: 0 auto 32px;
+    }
+
+    /* === PROSSIMAMENTE === */
+    .sezione-prossimamente {
+      background: var(--inchiostro);
+      color: var(--panna);
+      padding: 100px 24px 120px;
+      border-top: 3px double var(--oro);
+      border-bottom: 3px double var(--oro);
+      text-align: center;
+    }
+    .sezione-prossimamente .label-sezione {
+      color: var(--oro);
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+    .sezione-prossimamente .filetto-deco {
+      border-top-color: var(--oro);
+      border-bottom-color: var(--oro);
+    }
+    .sezione-prossimamente .x-grande {
+      font-family: 'Italianno', cursive;
+      font-size: 140px;
+      color: var(--oro);
+      line-height: 0.7;
+      margin-bottom: 8px;
+      opacity: 0.4;
+    }
+    .sezione-prossimamente h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 48px;
+      color: var(--panna);
+      line-height: 1.02;
+      margin-bottom: 18px;
+    }
+    @media (min-width: 1024px) { .sezione-prossimamente h2 { font-size: 96px; } }
+    .sezione-prossimamente h2 em {
+      font-style: italic;
+      color: var(--oro-chiaro);
+      display: block;
+      font-size: 0.55em;
+      margin-top: 14px;
+    }
+    .sezione-prossimamente .descrizione {
+      max-width: 640px;
+      margin: 32px auto 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: rgba(240, 234, 216, 0.78);
+      line-height: 1.65;
+    }
+    @media (min-width: 768px) { .sezione-prossimamente .descrizione { font-size: 22px; } }
+    .sezione-prossimamente .descrizione strong {
+      color: var(--panna);
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    /* === SAVERIO === */
+    .sezione-saverio {
+      padding: 100px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sezione-saverio .intro {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 64px;
+    }
+    .sezione-saverio .intro .ornamento {
+      font-family: 'Italianno', cursive;
+      font-size: 40px;
+      color: var(--oro);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .sezione-saverio .intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      color: var(--inchiostro);
+      margin-bottom: 18px;
+      line-height: 1.1;
+    }
+    @media (min-width: 768px) { .sezione-saverio .intro h2 { font-size: 56px; } }
+    .sezione-saverio .intro h2 em { font-style: italic; color: var(--cipresso); }
+    .sezione-saverio .intro p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--grafite);
+      line-height: 1.6;
+    }
+    .sezione-saverio .coppia {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    @media (min-width: 768px) {
+      .sezione-saverio .coppia { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+    .sezione-saverio .coppia figure { margin: 0; }
+    .sezione-saverio .ph {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--linea-soft);
+    }
+    .sezione-saverio .coppia figcaption {
+      margin-top: 16px;
+      text-align: center;
+    }
+    .sezione-saverio .coppia figcaption .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--oro);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .sezione-saverio .coppia figcaption .didascalia {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--grafite);
+    }
+    .firma-spazio29 {
+      margin-top: 60px;
+      padding: 64px 32px;
+      background: var(--inchiostro);
+      color: var(--panna);
+      text-align: center;
+      border-top: 3px double var(--oro);
+    }
+    .firma-spazio29 .ornamento {
+      font-family: 'Italianno', cursive;
+      font-size: 44px;
+      color: var(--oro);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .firma-spazio29 h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 36px;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .firma-spazio29 h3 em { font-style: italic; color: var(--oro-chiaro); }
+    .firma-spazio29 .sponsor-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: rgba(240, 234, 216, 0.72);
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .firma-spazio29 .tel-saverio {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 28px;
+      border: 1px solid var(--oro);
+      color: var(--panna);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      transition: all 250ms;
+    }
+    .firma-spazio29 .tel-saverio:hover {
+      background: var(--oro);
+      color: var(--inchiostro);
+    }
+
+    /* === FOOTER MINI === */
+    .footer-mini {
+      padding: 32px 24px;
+      text-align: center;
+      border-top: 1px solid var(--linea-soft);
+    }
+    .footer-mini a {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cipresso);
+      text-decoration: none;
+      padding: 10px 22px;
+      border: 1px solid var(--cipresso);
+      display: inline-block;
+      transition: all 200ms;
+    }
+    .footer-mini a:hover { background: var(--cipresso); color: var(--panna); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="storia-header">
+    <a href="index.html" class="brand">
+      il&nbsp;buongustaio
+      <span class="brand-tag">la nostra storia</span>
+    </a>
+    <a href="index.html" class="storia-back">← Torna al sito</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="storia-hero">
+    <p class="capitolo-label">Capitolo I · dal 1999</p>
+    <h1>
+      Venticinque anni
+      <em>di sapori.</em>
+    </h1>
+    <p class="sottotitolo">
+      Una bottega. Una famiglia. Un quartiere che si è fidato.
+    </p>
+  </section>
+
+  <!-- SEZIONE PRATO -->
+  <section class="sezione-prato reveal">
+    <span class="filetto-deco"></span>
+    <p class="label-sezione">Il luogo</p>
+    <h2>Prato, <em>via Catani.</em></h2>
+    <div class="testo">
+      <p>
+        Mezzana è il quartiere che lavora. Artigiani, impiegati, professionisti.
+        Famiglie che da venticinque anni passano da noi sotto la pausa pranzo
+        e tornano la sera con il cestino per la cena.
+      </p>
+      <p>
+        Nel <em>1999</em> Gianni ha aperto le porte di una piccola bottega di gastronomia.
+        Una vetrina, un banco, l'idea di un cibo fatto bene e venduto onestamente.
+        Da allora — è cambiato il mondo, è cambiata Mezzana — ma il nostro modo di lavorare è rimasto lo stesso.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROSSIMAMENTE -->
+  <section class="sezione-prossimamente reveal">
+    <span class="filetto-deco"></span>
+    <p class="label-sezione">Capitolo II</p>
+    <div class="x-grande">×</div>
+    <h2>
+      Prossimamente.
+      <em>La storia, raccontata su misura.</em>
+    </h2>
+    <p class="descrizione">
+      <strong>Qui scriveremo la storia della famiglia Bindi</strong>,
+      raccontata da chi la vive ogni giorno. Come è nata la bottega,
+      le persone, gli incontri, i piatti che hanno fatto la differenza.
+      Le mani di Rossana e Paola in cucina. Il banco di Gianni. Lorenzo e
+      Alessio che imparano l'arte del taglio.<br/><br/>
+      Una storia su misura, scritta a quattro mani con lo staff.
+      <em>Sarà pronta presto.</em>
+    </p>
+  </section>
+
+  <!-- SAVERIO / SPAZIO29 -->
+  <section class="sezione-saverio">
+    <div class="intro reveal">
+      <span class="ornamento">Il restyling</span>
+      <h2>Prima, <em>e dopo.</em></h2>
+      <p>
+        Nel 2024 la bottega ha vissuto il suo restyling più importante.
+        Progetto e direzione lavori firmati da <strong>Spazio29</strong>,
+        lo studio di Saverio. Stessa anima, vesti nuove.
+      </p>
+    </div>
+
+    <div class="coppia">
+      <figure class="reveal-left">
+        <div class="ph" style="background-image: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(26,22,18,0.2)), url('assets/foto/locale-prima.jpg');"></div>
+        <figcaption>
+          <p class="label">Prima · 2023</p>
+          <p class="didascalia">Il banco storico, il legno di sempre.</p>
+        </figcaption>
+      </figure>
+      <figure class="reveal-right">
+        <div class="ph" style="background-image: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(26,22,18,0.2)), url('assets/foto/locale-dopo.jpg');"></div>
+        <figcaption>
+          <p class="label">Dopo · 2024</p>
+          <p class="didascalia">Più luce, più spazio, lo stesso cuore.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="firma-spazio29 reveal">
+      <span class="ornamento">grazie</span>
+      <h3>A <em>Spazio29</em>, per averci ascoltati.</h3>
+      <p class="sponsor-line">
+        Architettura, interni, direzione lavori.<br/>
+        Saverio e il suo studio hanno disegnato il banco di oggi.
+      </p>
+      <a href="tel:+393288188031" class="tel-saverio">Saverio · 328 818 8031</a>
+    </div>
+  </section>
+
+  <!-- FOOTER MINI -->
+  <div class="footer-mini">
+    <a href="index.html">← Torna al sito principale</a>
+  </div>
+
+  <script>
+    // Animazioni a scroll: rivela elementi quando entrano nel viewport
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el){
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

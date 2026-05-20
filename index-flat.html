@@ -1,0 +1,1592 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Il Buongustaio · La percezione del gusto · Gastronomia · Enoteca · Cacioteca · Prato</title>
+<meta name="description" content="La percezione del gusto. Una bottega di famiglia a Mezzana, dal 1999. La cucina di Paola e Rossana, il banco di Gianni, Lorenzo e Alessio. Pata Negra, mortadella di Prato, Carmignano." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Il Buongustaio · La percezione del gusto" />
+<meta property="og:description" content="Una bottega di famiglia a Mezzana, dal 1999. Gastronomia, enoteca, cacioteca." />
+<meta property="og:locale" content="it_IT" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Italianno&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============ DESIGN TOKENS — TOSCANA ============ */
+:root {
+  /* Sfondi materici */
+  --panna:       #F0EAD8;   /* sfondo principale, carta da pasticceria calda */
+  --pietra:      #D9C9A8;   /* beige pietra di Prato, sezioni alternate */
+  --avorio:      #EFE7D2;   /* card, surface */
+
+  /* Inchiostri */
+  --inchiostro:  #1A1612;   /* nero caldo, testo principale */
+  --grafite:     #3D352B;   /* testo secondario */
+  --polvere:      #6E6450;   /* meta, didascalie - leggibile su panna */
+
+  /* Verdi toscani */
+  --cipresso:    #2E3D2F;   /* verde profondo, sezioni scure, accenti forti */
+  --oliva:       #5C5E3A;   /* verde medio, link, accenti vegetali */
+  --salvia:      #8B9A7B;   /* verde chiaro per dettagli */
+
+  /* Oro antico */
+  --oro:         #A8843C;   /* oro olio d'oliva, CTA, dettagli pregiati */
+  --oro-chiaro:  #C9A862;   /* oro hover, highlight */
+
+  /* Funzionali */
+  --linea:       #B8A988;   /* divisori, tono pietra scura */
+  --linea-soft:  rgba(184, 169, 136, 0.4);
+}
+
+/* ============ RESET ============ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  background: var(--panna);
+  color: var(--inchiostro);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.75;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(26, 22, 18, 0.018) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: color 250ms ease-out, opacity 250ms ease-out; }
+em, i { font-style: italic; }
+::selection { background: var(--cipresso); color: var(--panna); }
+*:focus-visible { outline: 2px solid var(--oro); outline-offset: 4px; }
+
+/* Tipografia titoli */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--inchiostro);
+  letter-spacing: -0.005em;
+}
+
+/* ============ UTILITY ============ */
+.wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+@media (min-width: 1024px) { .wrap { padding: 0 56px; } }
+
+.label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--polvere);
+  font-weight: 500;
+}
+
+.script {
+  font-family: 'Italianno', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Filetto doppio decorativo (etichetta di vino) */
+.filetto {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px;
+  color: var(--oro);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+}
+.filetto::before, .filetto::after {
+  content: ''; flex: 1; max-width: 80px;
+  border-top: 1px solid var(--oro);
+  border-bottom: 1px solid var(--oro);
+  height: 3px;
+}
+
+/* Cornice etichetta vino */
+.cornice {
+  border-top: 1px double var(--oro);
+  border-bottom: 1px double var(--oro);
+  padding: 32px 0;
+  position: relative;
+}
+.cornice::before, .cornice::after {
+  content: '·';
+  position: absolute;
+  color: var(--oro);
+  font-size: 24px;
+  line-height: 1;
+}
+.cornice::before { top: -14px; left: 50%; transform: translateX(-50%); background: var(--panna); padding: 0 12px; }
+.cornice::after  { bottom: -14px; left: 50%; transform: translateX(-50%); background: var(--panna); padding: 0 12px; }
+
+/* Bottoni */
+.btn-primario, .btn-secondario, .btn-oro {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 18px 32px;
+  cursor: pointer;
+  transition: all 250ms ease-out;
+  border: 1px solid;
+  text-align: center;
+  font-weight: 500;
+  text-decoration: none;
+}
+.btn-primario {
+  background: var(--cipresso);
+  color: var(--panna);
+  border-color: var(--cipresso);
+}
+.btn-primario:hover { background: var(--inchiostro); border-color: var(--inchiostro); }
+
+.btn-oro {
+  background: transparent;
+  color: var(--oro);
+  border-color: var(--oro);
+  border-width: 1px;
+}
+.btn-oro:hover { background: var(--oro); color: var(--panna); }
+
+.btn-secondario {
+  background: transparent;
+  color: var(--inchiostro);
+  border-color: var(--inchiostro);
+}
+.btn-secondario:hover { background: var(--inchiostro); color: var(--panna); }
+
+.link-edit { position: relative; display: inline-block; }
+.link-edit::after {
+  content: ''; position: absolute; left: 0; bottom: -2px;
+  width: 100%; height: 1px; background: currentColor;
+  transform: scaleX(1); transform-origin: right;
+  transition: transform 300ms ease-out;
+}
+.link-edit:hover::after { transform: scaleX(0); transform-origin: left; }
+
+.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 800ms ease-out, transform 800ms ease-out; }
+.fade-up.is-visible { opacity: 1; transform: translateY(0); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+/* Capolettera ornato */
+.dropcap::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 5em;
+  float: left;
+  line-height: 0.85;
+  padding: 8px 12px 0 0;
+  color: var(--cipresso);
+  font-weight: 500;
+}
+
+/* ============ HEADER ============ */
+header {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(240, 234, 216, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linea-soft);
+}
+.nav-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+}
+@media (min-width: 1024px) { .nav-row { padding: 24px 0; } }
+
+.logo-block { display: flex; align-items: baseline; gap: 10px; }
+.logo {
+  font-family: 'Italianno', cursive;
+  font-size: 38px;
+  color: var(--inchiostro);
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+}
+@media (min-width: 1024px) { .logo { font-size: 44px; } }
+.logo-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: var(--oro);
+  text-transform: uppercase;
+  display: none;
+}
+@media (min-width: 1024px) { .logo-tag { display: inline-block; } }
+
+.nav-list { display: none; list-style: none; gap: 40px; align-items: center; }
+@media (min-width: 1024px) { .nav-list { display: flex; } }
+.nav-list a.label { padding: 8px 0; transition: color 200ms; }
+.nav-list a.label:hover { color: var(--oliva); }
+
+.tel-desktop { display: none; }
+@media (min-width: 1024px) {
+  .tel-desktop { display: inline-flex; align-items: center; gap: 8px; font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--inchiostro); }
+  .tel-desktop::before { content: ''; width: 5px; height: 5px; background: var(--oro); border-radius: 50%; }
+}
+
+.hamburger {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: none; border: 0; cursor: pointer; padding: 6px;
+  color: var(--inchiostro);
+}
+@media (min-width: 1024px) { .hamburger { display: none; } }
+
+.drawer {
+  position: fixed; inset: 0; z-index: 50;
+  background: var(--panna);
+  transform: translateX(100%);
+  transition: transform 350ms ease-out;
+  display: flex; flex-direction: column;
+}
+.drawer.is-open { transform: translateX(0); }
+.drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--linea-soft); }
+.drawer-nav { flex: 1; padding: 40px 24px; overflow-y: auto; }
+.drawer-nav a {
+  display: block; font-family: 'Playfair Display', serif; font-size: 34px;
+  color: var(--inchiostro); padding: 16px 0;
+  border-bottom: 1px solid var(--linea-soft);
+}
+.drawer-foot { padding: 28px 24px; background: var(--pietra); }
+@media (min-width: 1024px) { .drawer { display: none; } }
+
+/* ============ HERO — frontespizio editoriale con foto grande ============ */
+.hero {
+  position: relative;
+  border-bottom: 1px solid var(--linea-soft);
+  padding: 32px 0 0;
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .hero { padding: 56px 0 0; }
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (min-width: 1024px) { .hero-inner { padding: 0 72px; } }
+
+/* Riga superiore: insegna + anno */
+.hero-topline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--inchiostro);
+}
+.hero-topline .insegna {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--inchiostro);
+  font-weight: 500;
+}
+.hero-topline .anno {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--polvere);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+@media (min-width: 1024px) {
+  .hero-topline { margin-bottom: 32px; padding-bottom: 18px; }
+  .hero-topline .insegna { font-size: 13px; }
+  .hero-topline .anno { font-size: 18px; }
+}
+
+/* Numero capitolo romano (I) */
+.hero-capitolo {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--oro);
+  margin-bottom: 20px;
+}
+@media (min-width: 1024px) { .hero-capitolo { font-size: 15px; margin-bottom: 32px; } }
+
+/* Titolo principale: tipografia stratificata */
+.hero-titolo {
+  margin-bottom: 32px;
+}
+.hero-titolo h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  color: var(--inchiostro);
+  font-size: 52px;
+}
+.hero-titolo h1 .riga1 {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+.hero-titolo h1 .riga2 {
+  display: block;
+  font-style: italic;
+  color: var(--cipresso);
+  padding-left: 12%;
+  margin-top: 4px;
+  font-weight: 400;
+}
+@media (min-width: 1024px) {
+  .hero-titolo h1 { font-size: 116px; line-height: 0.88; }
+  .hero-titolo h1 .riga2 { padding-left: 16%; margin-top: 0; }
+  .hero-titolo { margin-bottom: 40px; }
+}
+
+/* FOTO GRANDE BANCO-FAMIGLIA — protagonista */
+.hero-photo-main {
+  width: 100%;
+  aspect-ratio: 21 / 11;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(26, 22, 18, 0.45) 100%),
+    url('./banco-famiglia.jpg');
+  background-size: cover, cover;
+  background-position: center, center;
+  position: relative;
+  margin-bottom: 0;
+  border-top: 3px double var(--oro);
+  border-bottom: 3px double var(--oro);
+}
+@media (min-width: 768px) { .hero-photo-main { aspect-ratio: 21 / 9; } }
+@media (min-width: 1024px) { .hero-photo-main { aspect-ratio: 21 / 8; min-height: 460px; } }
+
+.hero-photo-caption {
+  position: absolute;
+  left: 24px; right: 24px; bottom: 20px;
+  color: var(--panna);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+@media (min-width: 1024px) {
+  .hero-photo-caption { left: 56px; right: 56px; bottom: 36px; }
+}
+.hero-photo-caption .stamp-name {
+  font-family: 'Italianno', cursive;
+  font-size: 48px;
+  color: var(--oro-chiaro);
+  line-height: 0.85;
+}
+@media (min-width: 1024px) { .hero-photo-caption .stamp-name { font-size: 88px; } }
+.hero-photo-caption .stamp-meta {
+  text-align: right;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(240, 234, 216, 0.85);
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+.hero-photo-caption .stamp-meta .label {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--oro-chiaro);
+  display: block;
+  margin-bottom: 4px;
+}
+@media (min-width: 1024px) {
+  .hero-photo-caption .stamp-meta { font-size: 16px; }
+  .hero-photo-caption .stamp-meta .label { font-size: 10px; }
+}
+
+/* Sotto la foto: intro + CTA */
+.hero-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px 24px 56px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: end;
+}
+@media (min-width: 1024px) {
+  .hero-bottom {
+    padding: 56px 72px 80px;
+    grid-template-columns: 5fr 4fr;
+    gap: 80px;
+  }
+}
+
+.hero-intro p.occhiello {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--oro);
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-intro p.occhiello::before {
+  content: '';
+  width: 36px; height: 1px; background: var(--oro);
+}
+.hero-intro p.descrizione {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--grafite);
+  line-height: 1.55;
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+@media (min-width: 1024px) {
+  .hero-intro p.descrizione { font-size: 22px; }
+}
+.hero-ctas-new {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  align-items: center;
+}
+
+/* ============ SECTIONS ============ */
+section { padding: 96px 0; }
+@media (min-width: 1024px) { section { padding: 140px 0; } }
+
+/* Filosofia — cornice etichetta vino */
+.section-filosofia {
+  border-bottom: 1px solid var(--linea-soft);
+}
+.section-filosofia .wrap { max-width: 880px; text-align: center; }
+.section-filosofia .ornamento {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--oro);
+  line-height: 1;
+  margin-bottom: 32px;
+}
+.section-filosofia .filetto { margin-bottom: 40px; }
+.section-filosofia h2 {
+  font-size: 36px;
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+@media (min-width: 1024px) { .section-filosofia h2 { font-size: 56px; } }
+.section-filosofia h2 em { color: var(--cipresso); font-style: italic; }
+.section-filosofia p.body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--grafite);
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Section header standard */
+.section-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 64px; }
+@media (min-width: 1024px) {
+  .section-header { flex-direction: row; align-items: flex-end; justify-content: space-between; margin-bottom: 80px; }
+}
+.section-header .titolo-block { flex: 1; max-width: 640px; }
+.section-header h2 { font-size: 44px; line-height: 1; margin-top: 20px; }
+@media (min-width: 1024px) { .section-header h2 { font-size: 72px; } }
+.section-header h2 em { font-style: italic; color: var(--cipresso); }
+
+/* Bottega */
+.product-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 24px;
+}
+@media (min-width: 768px) { .product-grid { grid-template-columns: repeat(3, 1fr); gap: 48px 32px; } }
+@media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(3, 1fr); gap: 56px 36px; } }
+.product { position: relative; }
+.product .photo {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, var(--avorio), var(--pietra));
+  margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--polvere); font-style: italic; font-size: 11px;
+  position: relative;
+}
+.product .photo::after {
+  content: ''; position: absolute; inset: 12px;
+  border: 1px solid rgba(168, 132, 60, 0.2);
+}
+.product .price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--oro);
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.product .name { font-family: 'Playfair Display', serif; font-size: 22px; line-height: 1.15; margin-bottom: 4px; color: var(--inchiostro); }
+.product .meta { font-size: 10.5px; letter-spacing: 0.16em; color: var(--polvere); text-transform: uppercase; margin-bottom: 10px; }
+.product .desc { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--grafite); font-style: italic; line-height: 1.55; }
+
+/* Mezzana / La pausa pranzo */
+.section-mezzana {
+  background: var(--pietra);
+  position: relative;
+}
+.section-mezzana::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(26, 22, 18, 0.04) 1px, transparent 0);
+  background-size: 6px 6px;
+  pointer-events: none;
+}
+.mezzana-grid {
+  display: grid; grid-template-columns: 1fr; gap: 48px;
+  position: relative;
+}
+@media (min-width: 1024px) { .mezzana-grid { grid-template-columns: 5fr 7fr; gap: 80px; align-items: center; } }
+.mezzana-photo {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, var(--cipresso), var(--oliva) 60%, #1f2a20);
+  position: relative;
+}
+.mezzana-photo::after {
+  content: ''; position: absolute; inset: 16px;
+  border: 1px solid rgba(168, 132, 60, 0.4);
+}
+.mezzana-text .occhiello { margin-bottom: 24px; }
+.mezzana-text h2 {
+  font-size: 44px;
+  margin-bottom: 36px;
+  line-height: 1.02;
+}
+@media (min-width: 1024px) { .mezzana-text h2 { font-size: 72px; } }
+.mezzana-text h2 em { color: var(--cipresso); font-style: italic; }
+.mezzana-text .script-orn {
+  font-family: 'Italianno', cursive;
+  font-size: 48px;
+  color: var(--oro);
+  line-height: 0.9;
+  display: block;
+  margin: -8px 0 8px;
+}
+.mezzana-text p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  color: var(--grafite);
+  line-height: 1.65;
+  margin-bottom: 24px;
+  max-width: 600px;
+  font-style: italic;
+}
+.mezzana-text .cta-row { margin-top: 32px; }
+
+/* Origini */
+.section-origini .titolo-block { text-align: center; max-width: 880px; margin: 0 auto; }
+.section-origini .section-header { flex-direction: column; align-items: center; margin-bottom: 80px; }
+.section-origini h2 { text-align: center; }
+.section-origini h2 em { font-style: italic; }
+.section-origini .intro-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--grafite);
+  line-height: 1.6;
+  margin-top: 24px;
+  max-width: 640px;
+  margin-left: auto; margin-right: auto;
+}
+
+.origini-grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+@media (min-width: 768px) { .origini-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+.origine { text-align: center; }
+.origine .photo {
+  aspect-ratio: 4 / 5; margin-bottom: 24px;
+  position: relative;
+}
+.origine .photo::after {
+  content: ''; position: absolute; inset: 12px;
+  border: 1px solid rgba(168, 132, 60, 0.25);
+}
+.origine.o1 .photo { background: linear-gradient(135deg, #8B6D3A, #5C4628); }
+.origine.o2 .photo { background: linear-gradient(135deg, var(--oliva), var(--cipresso) 70%, #1f2a20); }
+.origine.o3 .photo { background: linear-gradient(135deg, var(--oro), #6E5523 70%, #3d2f12); }
+.origine .label { margin-bottom: 10px; }
+.origine h3 { font-size: 28px; margin-bottom: 12px; line-height: 1.1; }
+.origine h3 em { font-style: italic; }
+.origine p { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--grafite); font-style: italic; line-height: 1.6; max-width: 280px; margin: 0 auto; }
+
+.origini-cta-row { text-align: center; margin-top: 64px; }
+
+/* Separazione origini toscane / internazionali */
+.origini-gruppo-label {
+  text-align: center;
+  margin: 0 auto 48px;
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  max-width: 540px;
+}
+.origini-gruppo-label::before,
+.origini-gruppo-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--oro);
+  opacity: 0.5;
+}
+.origini-gruppo-label span {
+  font-family: 'Italianno', cursive;
+  font-size: 36px;
+  color: var(--cipresso);
+  line-height: 0.9;
+}
+
+.origini-divisore {
+  margin: 96px auto;
+  max-width: 480px;
+  text-align: center;
+}
+.origini-divisore .ornamento {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--oro);
+  margin-bottom: 12px;
+}
+.origini-divisore p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--polvere);
+  line-height: 1.5;
+}
+
+/* Pata Negra: scheda feature larga, orizzontale */
+.origine-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  background: var(--avorio);
+  border: 1px solid var(--linea-soft);
+  border-top: 3px solid var(--oro);
+  padding: 32px;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .origine-feature {
+    grid-template-columns: 5fr 6fr;
+    gap: 56px;
+    padding: 48px;
+    align-items: center;
+  }
+}
+.origine-feature .photo {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, #8B6D3A, #5C4628 60%, #2d1f10);
+  position: relative;
+  margin: 0;
+}
+.origine-feature .photo::after {
+  content: ''; position: absolute; inset: 14px;
+  border: 1px solid rgba(168, 132, 60, 0.4);
+}
+.origine-feature .testo .label { margin-bottom: 14px; color: var(--oro); }
+.origine-feature .testo h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 18px;
+  color: var(--inchiostro);
+}
+@media (min-width: 768px) { .origine-feature .testo h3 { font-size: 48px; } }
+.origine-feature .testo h3 em { font-style: italic; color: var(--cipresso); }
+.origine-feature .testo p.lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--grafite);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.origine-feature .dati-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--linea-soft);
+}
+.origine-feature .dati-row .label { margin-bottom: 4px; }
+.origine-feature .dati-row .valore {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: var(--inchiostro);
+  line-height: 1.3;
+}
+
+/* La famiglia */
+.section-famiglia { background: var(--avorio); border-top: 1px solid var(--linea-soft); border-bottom: 1px solid var(--linea-soft); }
+.famiglia-intro { max-width: 760px; margin: 0 auto 80px; text-align: center; }
+.famiglia-intro .ornamento { font-family: 'Italianno', cursive; font-size: 64px; color: var(--oro); line-height: 0.8; margin-bottom: 16px; display: block; }
+.famiglia-intro h2 { font-size: 44px; margin-bottom: 32px; line-height: 1; }
+@media (min-width: 1024px) { .famiglia-intro h2 { font-size: 72px; } }
+.famiglia-intro h2 em { font-style: italic; color: var(--cipresso); }
+.famiglia-intro p { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--grafite); line-height: 1.6; }
+
+.famiglia-grid { display: grid; grid-template-columns: 1fr; gap: 36px; }
+@media (min-width: 768px) { .famiglia-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .famiglia-grid { grid-template-columns: repeat(7, 1fr); gap: 22px; } }
+.persona { display: flex; gap: 20px; align-items: flex-start; }
+@media (min-width: 1024px) { .persona { flex-direction: column; gap: 0; text-align: center; align-items: center; } }
+.persona .ritratto {
+  width: 88px; height: 88px; flex-shrink: 0;
+  background: var(--pietra);
+  border: 1px solid var(--oro);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Italianno', cursive; font-size: 48px; color: var(--cipresso);
+  line-height: 0.7; padding-top: 8px;
+  position: relative;
+}
+.persona .ritratto img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.persona.placeholder .ritratto {
+  background: var(--panna);
+  border-style: dashed;
+  border-color: var(--oro);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-style: italic;
+  color: var(--oro);
+  padding-top: 0;
+  line-height: 1;
+}
+.persona.placeholder h3 {
+  color: var(--polvere);
+  font-style: italic;
+}
+.persona.placeholder .role { color: var(--polvere); }
+@media (min-width: 1024px) { .persona .ritratto { width: 110px; height: 110px; margin-bottom: 16px; font-size: 56px; } }
+.persona h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 4px; }
+@media (min-width: 1024px) { .persona h3 { font-size: 19px; } }
+.persona .role { font-size: 10px; letter-spacing: 0.2em; color: var(--oro); text-transform: uppercase; margin-bottom: 10px; }
+.persona .spec { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--grafite); font-style: italic; line-height: 1.4; }
+@media (min-width: 1024px) { .persona .spec { font-size: 13px; } }
+
+.famiglia-cta-row { text-align: center; margin-top: 72px; }
+
+/* Restyling (Spazio29 menzionato qui) */
+.section-restyling .restyling-intro { max-width: 760px; margin-bottom: 64px; }
+
+/* Banner Toscana verde vivo */
+.toscana-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(26, 22, 18, 0.45) 100%),
+    url('https://images.unsplash.com/photo-1758552218652-55cc191d7914?w=2000&q=80&auto=format&fit=crop');
+  background-size: cover, cover;
+  background-position: center, center;
+  display: flex; align-items: flex-end;
+  margin-bottom: 80px;
+  border-bottom: 3px solid var(--oro);
+}
+@media (min-width: 1024px) { .toscana-banner { aspect-ratio: 21 / 8; min-height: 360px; } }
+.toscana-banner-text {
+  padding: 32px 24px;
+  color: var(--panna);
+  width: 100%;
+}
+@media (min-width: 1024px) { .toscana-banner-text { padding: 56px 72px; } }
+.toscana-banner-text .filetto-deco {
+  display: block;
+  width: 60px;
+  border-top: 1px solid var(--oro-chiaro);
+  border-bottom: 1px solid var(--oro-chiaro);
+  height: 4px;
+  margin-bottom: 18px;
+}
+.toscana-banner-text .script {
+  font-family: 'Italianno', cursive;
+  font-size: 72px;
+  color: var(--oro-chiaro);
+  line-height: 0.9;
+  margin-bottom: 4px;
+}
+@media (min-width: 1024px) { .toscana-banner-text .script { font-size: 110px; } }
+.toscana-banner-text .caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: rgba(240, 234, 216, 0.92);
+  line-height: 1.4;
+  max-width: 460px;
+}
+@media (min-width: 1024px) { .toscana-banner-text .caption { font-size: 24px; } }
+.section-restyling .restyling-intro .occhiello { margin-bottom: 24px; }
+.section-restyling .restyling-intro h2 {
+  font-size: 40px;
+  margin-bottom: 28px;
+  line-height: 1.05;
+}
+@media (min-width: 1024px) { .section-restyling .restyling-intro h2 { font-size: 64px; } }
+.section-restyling .restyling-intro h2 em { font-style: italic; color: var(--cipresso); }
+.section-restyling .restyling-intro p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  color: var(--grafite);
+  line-height: 1.65;
+  font-style: italic;
+}
+.section-restyling .restyling-intro p .credit-spazio29 {
+  font-family: 'Playfair Display', serif;
+  font-style: normal;
+  color: var(--cipresso);
+  font-weight: 500;
+  border-bottom: 1px solid var(--oro);
+  padding-bottom: 1px;
+}
+
+.restyling-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 768px) { .restyling-grid { grid-template-columns: 1fr 1fr; gap: 48px; } }
+.restyling-grid figure { margin: 0; }
+.restyling-grid .photo { aspect-ratio: 5 / 4; margin-bottom: 20px; position: relative; }
+.restyling-grid .photo::after { content: ''; position: absolute; inset: 12px; border: 1px solid rgba(168, 132, 60, 0.25); }
+.restyling-grid .photo.prima {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(26, 22, 18, 0.3) 100%),
+    url('./locale-prima.jpg');
+  background-size: cover, cover;
+  background-position: center, center;
+}
+.restyling-grid .photo.dopo {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(26, 22, 18, 0.3) 100%),
+    url('./locale-dopo.jpg');
+  background-size: cover, cover;
+  background-position: center, center;
+}
+.restyling-grid figcaption .label { color: var(--oro); margin-bottom: 6px; display: block; }
+.restyling-grid figcaption h4 { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--inchiostro); }
+
+.restyling-contact-saverio {
+  margin-top: 56px;
+  padding: 32px;
+  background: var(--avorio);
+  border: 1px solid var(--linea);
+  border-top: 4px solid var(--oro);
+  text-align: center;
+  max-width: 620px;
+  margin-left: auto; margin-right: auto;
+}
+.restyling-contact-saverio .label { color: var(--oro); margin-bottom: 12px; }
+.restyling-contact-saverio p { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--grafite); line-height: 1.6; font-style: italic; margin-bottom: 14px; }
+.restyling-contact-saverio .saverio-name { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--cipresso); font-style: normal; }
+.restyling-contact-saverio a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: var(--inchiostro);
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/* Trovaci */
+.section-trovaci { background: var(--cipresso); color: var(--panna); position: relative; }
+.section-trovaci::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(240, 234, 216, 0.025) 1px, transparent 0);
+  background-size: 6px 6px;
+  pointer-events: none;
+}
+.trovaci-grid { display: grid; grid-template-columns: 1fr; gap: 56px; position: relative; }
+@media (min-width: 1024px) { .trovaci-grid { grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; } }
+.trovaci-grid .label { color: var(--oro-chiaro); margin-bottom: 24px; }
+.trovaci-grid h2 { color: var(--panna); font-size: 44px; margin-bottom: 36px; line-height: 1; }
+@media (min-width: 1024px) { .trovaci-grid h2 { font-size: 72px; } }
+.trovaci-grid h2 em { font-style: italic; color: var(--oro-chiaro); }
+.trovaci-grid .script-orn { font-family: 'Italianno', cursive; font-size: 56px; color: var(--oro-chiaro); line-height: 0.85; display: block; margin: -4px 0 12px; }
+.trovaci-grid address { font-style: normal; font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.65; color: rgba(240,234,216,0.9); }
+.orari-block { border-left: 1px solid rgba(168,132,60,0.4); padding-left: 0; }
+@media (min-width: 1024px) { .orari-block { padding-left: 56px; } }
+.orari-row {
+  display: grid; grid-template-columns: 130px 1fr; gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(168,132,60,0.25);
+}
+.orari-row dt {
+  color: rgba(240,234,216,0.7);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding-top: 6px;
+}
+.orari-row dd { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--panna); }
+.orari-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: rgba(240,234,216,0.7);
+  font-style: italic;
+  margin-top: 28px;
+  max-width: 440px;
+  line-height: 1.65;
+}
+
+/* ============ FOOTER ============ */
+footer { background: var(--inchiostro); color: var(--panna); padding: 80px 0 32px; }
+.footer-top { display: grid; grid-template-columns: 1fr; gap: 48px; margin-bottom: 56px; }
+@media (min-width: 1024px) { .footer-top { grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap: 56px; } }
+.footer-col p.label { color: var(--oro); margin-bottom: 18px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { padding: 5px 0; font-size: 14px; font-family: 'Cormorant Garamond', serif; font-size: 17px; }
+.footer-col address { font-style: normal; font-family: 'Cormorant Garamond', serif; font-size: 16px; line-height: 1.7; color: rgba(240,234,216,0.85); }
+
+.footer-tagline {
+  font-family: 'Italianno', cursive;
+  font-size: 56px;
+  color: var(--panna);
+  line-height: 0.85;
+  margin-bottom: 16px;
+}
+.footer-tagline-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: rgba(240,234,216,0.75);
+  line-height: 1.65;
+}
+
+.footer-mid {
+  padding: 32px 0;
+  border-top: 1px solid rgba(168,132,60,0.2);
+  border-bottom: 1px solid rgba(168,132,60,0.2);
+  margin-bottom: 32px;
+  text-align: center;
+}
+.footer-mid .credit-bottega {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(240,234,216,0.7);
+}
+.footer-mid .credit-bottega .spazio29-name { color: var(--oro-chiaro); font-style: normal; }
+.footer-mid .credit-bottega .saverio-tel {
+  display: block; margin-top: 6px;
+  font-size: 14px;
+  color: rgba(240,234,216,0.55);
+}
+
+.footer-bottom {
+  display: flex; flex-direction: column; gap: 24px;
+}
+@media (min-width: 1024px) { .footer-bottom { flex-direction: row; align-items: flex-end; justify-content: space-between; } }
+.legal { font-size: 12px; color: rgba(240,234,216,0.55); line-height: 1.8; }
+.legal .piva { color: rgba(240,234,216,0.7); }
+
+.luxlab-credit { text-align: left; }
+@media (min-width: 1024px) { .luxlab-credit { text-align: right; } }
+.luxlab-credit .label { color: rgba(240,234,216,0.5); margin-bottom: 8px; display: block; }
+.luxlab-credit a {
+  font-family: 'Italianno', cursive;
+  font-size: 36px; color: var(--oro-chiaro);
+  position: relative; display: inline-block;
+  line-height: 0.9;
+}
+.luxlab-credit a:hover { color: var(--panna); }
+
+/* Cookie banner sobrio (richiesta utente: "kiukis demo") */
+.cookie-banner {
+  position: fixed; bottom: 16px; left: 16px; right: 16px;
+  background: var(--inchiostro); color: var(--panna);
+  padding: 18px 22px;
+  z-index: 60;
+  border: 1px solid var(--oro);
+  display: flex; flex-direction: column; gap: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic;
+  line-height: 1.5;
+  transform: translateY(120%);
+  transition: transform 400ms ease-out;
+  max-width: 520px;
+}
+.cookie-banner.is-visible { transform: translateY(0); }
+@media (min-width: 768px) {
+  .cookie-banner { left: 24px; right: auto; bottom: 24px; flex-direction: row; align-items: center; max-width: 600px; }
+}
+.cookie-banner p { margin: 0; }
+.cookie-banner .cookie-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.cookie-banner button {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border: 1px solid var(--oro);
+  background: transparent;
+  color: var(--oro);
+  cursor: pointer;
+  transition: all 200ms;
+}
+.cookie-banner button:hover { background: var(--oro); color: var(--inchiostro); }
+.cookie-banner button.primary { background: var(--oro); color: var(--inchiostro); }
+.cookie-banner button.primary:hover { background: var(--oro-chiaro); border-color: var(--oro-chiaro); }
+
+</style>
+</head>
+<body>
+
+<a href="#contenuto" class="sr-only">Vai al contenuto</a>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav-row">
+    <a href="#" class="logo-block">
+      <span class="logo">il&nbsp;buongustaio</span>
+      <span class="logo-tag">dal 1999</span>
+    </a>
+    <ul class="nav-list">
+      <li><a href="#bottega"  class="label">La Bottega</a></li>
+      <li><a href="#origini"  class="label">Le Origini</a></li>
+      <li><a href="#famiglia" class="label">La Famiglia</a></li>
+      <li><a href="#storia"   class="label">La Storia</a></li>
+      <li><a href="#trovaci"  class="label">Trovaci</a></li>
+    </ul>
+    <a href="tel:+390574593398" class="tel-desktop">0574 593398</a>
+    <button class="hamburger" id="menu-toggle" aria-label="Apri menu" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+        <line x1="3" y1="7"  x2="21" y2="7"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="17" x2="21" y2="17"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="logo">il&nbsp;buongustaio</span>
+    <button class="hamburger" id="menu-close" aria-label="Chiudi menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+        <line x1="6"  y1="6" x2="18" y2="18"/>
+        <line x1="18" y1="6" x2="6"  y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="#bottega"  data-close>La Bottega</a>
+    <a href="#origini"  data-close>Le Origini</a>
+    <a href="#famiglia" data-close>La Famiglia</a>
+    <a href="#storia"   data-close>La Storia</a>
+    <a href="#trovaci"  data-close>Trovaci</a>
+  </nav>
+  <div class="drawer-foot">
+    <p class="label" style="margin-bottom:10px;color:var(--cipresso);">Chiamaci</p>
+    <a href="tel:+390574593398" style="font-family:'Playfair Display',serif;font-size:28px;color:var(--inchiostro);display:block;">0574 593398</a>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--grafite);margin-top:14px;line-height:1.6;">
+      Via Giuseppe Catani 38/40, Prato<br/>
+      Lun–Sab 7:30–14:30 · 17:00–20:00<br/>
+      Domenica chiusa
+    </p>
+  </div>
+</div>
+
+<main id="contenuto">
+
+  <!-- ============ HERO — frontespizio editoriale con foto grande ============ -->
+  <section class="hero">
+
+    <!-- TOP: insegna + anno + numero romano + titolo -->
+    <div class="hero-inner">
+
+      <div class="hero-topline">
+        <span class="insegna">Il Buongustaio · Gastronomia · Enoteca · Cacioteca</span>
+        <span class="anno">Anno MMXXVI</span>
+      </div>
+
+      <div class="hero-capitolo">I.</div>
+
+      <div class="hero-titolo">
+        <h1>
+          <span class="riga1">La percezione</span>
+          <span class="riga2">del gusto.</span>
+        </h1>
+      </div>
+
+    </div>
+
+    <!-- FOTO GRANDE BANCO-FAMIGLIA — protagonista -->
+    <div class="hero-photo-main">
+      <div class="hero-photo-caption">
+        <span class="stamp-name">il buongustaio</span>
+        <div class="stamp-meta">
+          <span class="label">Mezzana · Prato</span>
+          La famiglia Bindi, al banco
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM: occhiello + intro + CTA -->
+    <div class="hero-bottom">
+
+      <div class="hero-intro">
+        <p class="occhiello">Prato · Mezzana · dal MCMXCIX</p>
+        <p class="descrizione">
+          Una bottega di famiglia. Paola e Rossana in cucina. Gianni, Lorenzo e Alessio al banco. In via Catani, dal 1999. Pata Negra, mortadella di Prato, il Carmignano della tenuta di Capezzana.
+        </p>
+        <div class="hero-ctas-new">
+          <a href="#bottega" class="btn-primario">Scopri la Bottega</a>
+          <a href="#origini" class="link-edit" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--cipresso);margin-left:6px;">Le origini →</a>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--polvere);line-height:1.6;text-align:left;border-left:2px solid var(--oro);padding-left:20px;">
+        <p style="margin-bottom:8px;font-family:'Inter',sans-serif;font-style:normal;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--oro);font-weight:500;">Da venticinque anni</p>
+        Lavoriamo come sempre. Scegliamo a uno a uno. Tagliamo a mano. Cuciniamo la mattina. Conosciamo i nostri clienti per nome.
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ============ FILOSOFIA ============ -->
+  <section class="section-filosofia fade-up">
+    <div class="wrap">
+      <div class="ornamento">❦</div>
+      <div class="filetto">LA NOSTRA FILOSOFIA</div>
+      <h2>Selezioniamo produttori<br/>che parlano <em>la nostra lingua</em>.</h2>
+      <p class="body">
+        Qualità, trasparenza, rispetto per il tempo delle cose buone. Conosciamo chi le fa, uno per uno. Le scegliamo per voi.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ BOTTEGA ============ -->
+  <section id="bottega" class="fade-up" style="scroll-margin-top:80px;">
+    <div class="wrap">
+      <div class="section-header">
+        <div class="titolo-block">
+          <div class="filetto" style="justify-content:flex-start;"><span style="flex:0;">A MEZZANA, A MEZZOGIORNO</span></div>
+          <h2>Le lasagne di <em>Paola e Rossana</em>,<br/>e tutto quello che oggi è al banco.</h2>
+        </div>
+        <a href="tel:+390574593398" class="btn-oro">Per la lista completa, chiamaci →</a>
+      </div>
+
+      <div class="product-grid">
+        <article class="product">
+          <div class="photo" style="background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(26,22,18,0.2) 100%), url('https://images.unsplash.com/photo-1534731384867-c2127a6eccb1?w=900&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+          <p class="price">12,50&nbsp;€</p>
+          <h3 class="name">Lasagne al forno</h3>
+          <p class="meta">Cucina · 500g</p>
+          <p class="desc">Le facciamo la mattina. Quando finiscono, finiscono.</p>
+        </article>
+
+        <article class="product">
+          <div class="photo" style="background: linear-gradient(135deg, #8B6D3A, #5C4628 60%, #2d1f10);"></div>
+          <p class="price">18,00&nbsp;€</p>
+          <h3 class="name">Pata Negra Bellota</h3>
+          <p class="meta">Extremadura · 200g</p>
+          <p class="desc">Maiali iberici al pascolo brado, stagionatura 36 mesi.</p>
+        </article>
+
+        <article class="product">
+          <div class="photo" style="background: linear-gradient(135deg, #C9A48A, #8C6F58 60%, #5C4937);"></div>
+          <p class="price">8,50&nbsp;€</p>
+          <h3 class="name">Mortadella di Prato IGP</h3>
+          <p class="meta">Macelleria pratese · 200g</p>
+          <p class="desc">Coriandolo, pistacchi, l'amarena dell'Alkermes.</p>
+        </article>
+
+        <article class="product">
+          <div class="photo" style="background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(26,22,18,0.25) 100%), url('https://images.unsplash.com/photo-1566904326734-e17fb7905d35?w=900&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+          <p class="price">14,00&nbsp;€</p>
+          <h3 class="name">Roast beef all'inglese</h3>
+          <p class="meta">Cucina · 200g</p>
+          <p class="desc">Taglio rosato al cuore, cottura lenta. Servito a fette sottili.</p>
+        </article>
+
+        <article class="product">
+          <div class="photo" style="background-image: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(26,22,18,0.25) 100%), url('https://images.unsplash.com/photo-1548869205-3b74ad80e605?w=900&q=80&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+          <p class="price">6,00&nbsp;€</p>
+          <h3 class="name">Patate al forno</h3>
+          <p class="meta">Cucina · 500g</p>
+          <p class="desc">Rosolate con rosmarino e olio toscano. Il contorno che va con tutto.</p>
+        </article>
+
+        <article class="product">
+          <div class="photo" style="background: linear-gradient(135deg, #5C2E2E, #2E1414 70%);"></div>
+          <p class="price">22,00&nbsp;€</p>
+          <h3 class="name">Carmignano DOCG</h3>
+          <p class="meta">Capezzana · 2021</p>
+          <p class="desc">La denominazione storica del territorio pratese.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MEZZANA ============ -->
+  <section class="section-mezzana fade-up">
+    <div class="wrap">
+      <div class="mezzana-grid">
+        <div class="mezzana-photo"></div>
+        <div class="mezzana-text">
+          <div class="occhiello"><div class="filetto" style="justify-content:flex-start;"><span style="flex:0;">LA PAUSA PRANZO DI MEZZANA</span></div></div>
+          <h2>
+            Il quartiere<br/>
+            <em>che lavora.</em><br/>
+            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.55em;color:var(--polvere);display:inline-block;margin-top:12px;letter-spacing:0.02em;">Da venticinque anni.</span>
+          </h2>
+          <p>
+            In via Catani, dal 1999. Dalle dodici alle due e mezza qui passa metà del quartiere: artigiani, impiegati, professionisti, e chi torna a casa col cestino.
+          </p>
+          <p>
+            Le lasagne calde di Paola e Rossana. La schiacciata appena uscita. Il bicchiere di Carmignano per chi torna al lavoro, e quello di Champagne per chi se lo merita.
+          </p>
+          <div class="cta-row">
+            <a href="https://www.google.com/maps/place/Il+Buongustaio/@43.876308,11.0923651,17z/data=!4m6!3m5!1s0x132ad08a02ff5f4d:0x0!8m2!3d43.876308!4d11.09494" target="_blank" rel="noopener" class="btn-secondario">Vieni a trovarci →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ORIGINI ============ -->
+  <section id="origini" class="section-origini fade-up" style="scroll-margin-top:80px;">
+    <div class="wrap">
+      <div class="section-header">
+        <div class="titolo-block">
+          <div class="filetto">LE ORIGINI</div>
+          <h2>Da dove vengono<br/><em>i prodotti del banco.</em></h2>
+          <p class="intro-text">
+            Dietro ogni prosciutto, ogni vino, ogni formaggio c'è un produttore preciso, una zona, una storia. Li abbiamo scelti uno per uno.
+          </p>
+        </div>
+      </div>
+
+      <!-- GRUPPO 1: Storie toscane (3 schede) -->
+      <div class="origini-gruppo-label"><span>dal nostro territorio</span></div>
+
+      <div class="origini-grid">
+        <article class="origine o2">
+          <div class="photo"></div>
+          <p class="label">Toscana · Carmignano (Prato)</p>
+          <h3><em>Carmignano</em></h3>
+          <p>Il vino del nostro territorio. Tenuta di Capezzana: una delle prime denominazioni d'origine del mondo, dal 1716, voluta dal Granduca Cosimo III.</p>
+        </article>
+
+        <article class="origine o3">
+          <div class="photo"></div>
+          <p class="label">Toscana · Prato</p>
+          <h3><em>Mortadella di Prato IGP</em></h3>
+          <p>Ricetta del Cinquecento, presidio del nostro territorio. Coriandolo, pistacchi, l'amarena dell'Alkermes. Selezionata dai macellai pratesi storici.</p>
+        </article>
+
+        <article class="origine o2" style="--accent: var(--oliva);">
+          <div class="photo"></div>
+          <p class="label">Toscana · San Miniato</p>
+          <h3><em>Tartufo bianco</em></h3>
+          <p>Il bianco pregiato della Toscana centrale. Stagione ottobre–dicembre, scavato a mano dai cavatori che conosciamo. Mai congelato.</p>
+        </article>
+      </div>
+
+      <!-- DIVISORE -->
+      <div class="origini-divisore">
+        <div class="ornamento">❦</div>
+        <p>E un'eccellenza che abbiamo scelto<br/>oltre il nostro territorio.</p>
+      </div>
+
+      <!-- GRUPPO 2: Pata Negra (scheda feature larga) -->
+      <div class="origini-gruppo-label"><span>selezionate nel mondo</span></div>
+
+      <article class="origine-feature">
+        <div class="photo"></div>
+        <div class="testo">
+          <p class="label">Spagna · Extremadura</p>
+          <h3><em>Pata Negra</em></h3>
+          <p class="lead">
+            Il prosciutto crudo più pregiato di Spagna. Maiali iberici allevati liberi nei boschi di querce, alimentati a ghiande. Stagionato trentasei mesi.
+            Sapore di nocciola, grasso che si scioglie sulla mano prima di arrivare in bocca. Il nostro pezzo forte al banco.
+          </p>
+          <div class="dati-row">
+            <div><p class="label">Razza</p><p class="valore">Iberico puro</p></div>
+            <div><p class="label">Alimentazione</p><p class="valore">Ghianda di leccio</p></div>
+            <div><p class="label">Stagionatura</p><p class="valore">36 mesi minimo</p></div>
+          </div>
+        </div>
+      </article>
+
+      <div class="origini-cta-row">
+        <a href="tel:+390574593398" class="btn-primario">Per la lista completa, chiamaci</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAMIGLIA ============ -->
+  <section id="famiglia" class="section-famiglia fade-up" style="scroll-margin-top:80px;">
+    <div class="wrap">
+
+      <div class="famiglia-intro">
+        <span class="ornamento">la famiglia</span>
+        <h2>Siamo in <em>cinque</em>.</h2>
+        <p>La cucina di Paola e Rossana. Il banco di Gianni, Lorenzo e Alessio.<br/>Sopra il banco, i prosciutti che hanno scelto loro. Dietro il banco, le lasagne che cucinano loro.</p>
+      </div>
+
+      <div class="famiglia-grid">
+        <article class="persona">
+          <div class="ritratto"><img src="./ritratto-gianni.jpg" alt="Gianni Bindi"></div>
+          <div><h3>Gianni</h3><p class="role">Titolare · Banco</p><p class="spec">Prosciutti, salumi, vini</p></div>
+        </article>
+        <article class="persona">
+          <div class="ritratto"><img src="./ritratto-paola.jpg" alt="Paola"></div>
+          <div><h3>Paola</h3><p class="role">Cucina</p><p class="spec">Lasagne, pasta al forno</p></div>
+        </article>
+        <article class="persona">
+          <div class="ritratto"><img src="./ritratto-rossana.jpg" alt="Rossana"></div>
+          <div><h3>Rossana</h3><p class="role">Cucina</p><p class="spec">Lasagne, gastronomia</p></div>
+        </article>
+        <article class="persona">
+          <div class="ritratto"><img src="./ritratto-lorenzo.jpg" alt="Lorenzo"></div>
+          <div><h3>Lorenzo</h3><p class="role">Banco · Selezione</p><p class="spec">Salumi, formaggi, vini</p></div>
+        </article>
+        <article class="persona">
+          <div class="ritratto"><img src="./ritratto-alessio.jpg" alt="Alessio"></div>
+          <div><h3>Alessio</h3><p class="role">Banco · Selezione</p><p class="spec">Salumi, formaggi, vini</p></div>
+        </article>
+        <article class="persona">
+          <div class="ritratto"><img src="./ritratto-cameriera.jpg" alt="Cameriera"></div>
+          <div><h3>Cameriera</h3><p class="role">Sala · Servizio</p><p class="spec">Accoglienza dei clienti</p></div>
+        </article>
+        <article class="persona placeholder">
+          <div class="ritratto">+</div>
+          <div><h3>da inserire</h3><p class="role">Famiglia in arrivo</p><p class="spec">Il prossimo membro del team</p></div>
+        </article>
+      </div>
+
+      <div class="famiglia-cta-row">
+        <a href="#storia" class="btn-oro">Leggi la nostra storia →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORIA / RESTYLING (Spazio29 menzionato qui, telefono Saverio) ============ -->
+  <section id="storia" class="section-restyling fade-up" style="scroll-margin-top:80px;">
+
+    <!-- Banner Toscana verde vivo, prima del wrap -->
+    <div class="toscana-banner">
+      <div class="toscana-banner-text">
+        <span class="filetto-deco"></span>
+        <p class="script">il verde vivo</p>
+        <p class="caption">della Toscana, e della nostra passione.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+
+      <div class="restyling-intro">
+        <div class="occhiello"><div class="filetto" style="justify-content:flex-start;"><span style="flex:0;">IL RESTYLING</span></div></div>
+        <h2>La bottega di ieri,<br/><em>la bottega di oggi.</em></h2>
+        <p>
+          Nel restyling firmato da <span class="credit-spazio29">Spazio29</span> abbiamo cambiato la luce, i materiali, la disposizione del banco — senza cambiare l'aria. Chi entra oggi riconosce subito la bottega di sempre, solo che ora è più chiara, più larga, più sua.
+        </p>
+      </div>
+
+      <div class="restyling-grid">
+        <figure>
+          <div class="photo prima"></div>
+          <figcaption>
+            <span class="label">Prima</span>
+            <h4>La vecchia bottega</h4>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="photo dopo"></div>
+          <figcaption>
+            <span class="label">Oggi</span>
+            <h4>Dopo il restyling</h4>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Contatto Spazio29 / Saverio -->
+      <div class="restyling-contact-saverio">
+        <p class="label">Per progetti con Spazio29</p>
+        <p>Il restyling della bottega è stato curato da <strong class="saverio-name">Saverio</strong> · Spazio29.</p>
+        <a href="tel:+393288188031" class="link-edit">328 818 8031</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ TROVACI ============ -->
+  <section id="trovaci" class="section-trovaci fade-up" style="scroll-margin-top:80px;">
+    <div class="wrap">
+      <div class="trovaci-grid">
+        <div>
+          <p class="label">Trovaci</p>
+          <h2>
+            <span class="script-orn">via</span> Catani 38,<br/>
+            <em>a Mezzana.</em>
+          </h2>
+          <address>
+            59100 Prato (PO)<br/>
+            <a href="tel:+390574593398" class="link-edit" style="color:var(--oro-chiaro);">0574 593398</a><br/>
+            <a href="mailto:sncbuongustaio@gmail.com" class="link-edit" style="color:rgba(240,234,216,0.85);font-size:17px;">sncbuongustaio@gmail.com</a>
+          </address>
+
+          <!-- Bottoni Mappa + Navigatore -->
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 32px;">
+            <a href="https://www.google.com/maps/place/Il+Buongustaio/@43.876308,11.0923651,17z/data=!4m6!3m5!1s0x132ad08a02ff5f4d:0x0!8m2!3d43.876308!4d11.09494"
+               target="_blank" rel="noopener"
+               style="display:inline-block;text-align:center;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;padding:16px 28px;background:transparent;color:var(--oro-chiaro);border:1px solid var(--oro-chiaro);transition:all 250ms;text-decoration:none;font-weight:500;"
+               onmouseover="this.style.background='var(--oro-chiaro)';this.style.color='var(--cipresso)';"
+               onmouseout="this.style.background='transparent';this.style.color='var(--oro-chiaro)';">
+              Apri su Google Maps
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=43.876308,11.09494&travelmode=driving"
+               target="_blank" rel="noopener"
+               style="display:inline-block;text-align:center;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;padding:18px 28px;background:var(--oro-chiaro);color:var(--cipresso);border:1px solid var(--oro-chiaro);transition:all 250ms;text-decoration:none;font-weight:500;"
+               onmouseover="this.style.opacity='0.85';"
+               onmouseout="this.style.opacity='1';">
+              Avvia il navigatore →
+            </a>
+          </div>
+        </div>
+        <div class="orari-block">
+          <p class="label">Orari</p>
+          <dl style="margin-top:8px;">
+            <div class="orari-row"><dt>Lun – Sab</dt><dd>7:30 – 14:30<br/>17:00 – 20:00</dd></div>
+            <div class="orari-row"><dt>Domenica</dt><dd style="color:rgba(240,234,216,0.55);font-style:italic;">chiusa</dd></div>
+          </dl>
+          <p class="orari-note">
+            Non facciamo cena: chiudiamo alle otto. Pranzo, merenda, aperitivo della casa, gastronomia d'asporto.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+
+    <div class="footer-top">
+
+      <div class="footer-col">
+        <p class="footer-tagline">il&nbsp;buongustaio</p>
+        <p class="footer-tagline-sub">Gastronomia · Enoteca · Cacioteca<br/>Dal 1999, in via Catani, a Mezzana.</p>
+      </div>
+
+      <div class="footer-col">
+        <p class="label">La Bottega</p>
+        <ul>
+          <li><a href="#bottega" class="link-edit">Gastronomia</a></li>
+          <li><a href="#bottega" class="link-edit">Salumi</a></li>
+          <li><a href="#bottega" class="link-edit">Cacioteca</a></li>
+          <li><a href="#bottega" class="link-edit">Enoteca</a></li>
+          <li><a href="#bottega" class="link-edit">Forno</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="label">Conosciamoci</p>
+        <ul>
+          <li><a href="#origini"  class="link-edit">Le Origini</a></li>
+          <li><a href="#famiglia" class="link-edit">La Famiglia</a></li>
+          <li><a href="#storia"   class="link-edit">La Storia</a></li>
+          <li><a href="#trovaci"  class="link-edit">Trovaci</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="label">Contatti</p>
+        <address>
+          Via Giuseppe Catani 38/40<br/>
+          59100 Prato (PO) · Mezzana<br/><br/>
+          <a href="tel:+390574593398" class="link-edit">0574 593398</a><br/>
+          <a href="mailto:sncbuongustaio@gmail.com" class="link-edit" style="word-break:break-all;">sncbuongustaio@gmail.com</a>
+        </address>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(240,234,216,0.65);margin-top:18px;line-height:1.7;">
+          Lun–Sab 7:30–14:30 · 17:00–20:00<br/>Domenica chiusa
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Banda intermedia: credit bottega Saverio/Spazio29 -->
+    <div class="footer-mid">
+      <p class="credit-bottega">
+        Design e progettazione della bottega · <span class="spazio29-name">Spazio29</span>
+        <span class="saverio-tel">Saverio · 328 818 8031</span>
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="legal">
+        <p>© <span id="year"></span> Il Buongustaio di Bindi Gianni e C. Snc · Tutti i diritti riservati</p>
+        <p>P.IVA <span class="piva">—</span> · Via Giuseppe Catani 38/40 · 59100 Prato</p>
+      </div>
+
+      <div class="luxlab-credit">
+        <span class="label">Sito web realizzato da</span>
+        <a href="#" target="_blank" rel="noopener" class="link-edit">LuxLab</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ============ COOKIE BANNER (richiesta utente "kiukis demo") ============ -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Informativa cookie">
+  <p>Usiamo solo cookie tecnici necessari al funzionamento. Niente tracciamento, niente pubblicità.</p>
+  <div class="cookie-actions">
+    <button id="cookie-info" type="button">Dettagli</button>
+    <button id="cookie-accept" class="primary" type="button">Va bene</button>
+  </div>
+</div>
+
+<script>
+// Drawer mobile
+(function () {
+  var t = document.getElementById('menu-toggle');
+  var c = document.getElementById('menu-close');
+  var d = document.getElementById('drawer');
+  if (!t || !d) return;
+  function open()  { d.classList.add('is-open');  d.setAttribute('aria-hidden','false'); t.setAttribute('aria-expanded','true');  document.body.style.overflow = 'hidden'; }
+  function close() { d.classList.remove('is-open'); d.setAttribute('aria-hidden','true');  t.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; }
+  t.addEventListener('click', open);
+  c && c.addEventListener('click', close);
+  d.querySelectorAll('[data-close]').forEach(function (a) { a.addEventListener('click', close); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+
+// Fade-up on scroll
+(function () {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.fade-up').forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.fade-up').forEach(function (el) { obs.observe(el); });
+})();
+
+// Year nel footer
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Cookie banner — appare dopo 1.5s, si chiude su accept
+(function () {
+  var banner = document.getElementById('cookie-banner');
+  var accept = document.getElementById('cookie-accept');
+  if (!banner) return;
+  setTimeout(function () { banner.classList.add('is-visible'); }, 1500);
+  accept && accept.addEventListener('click', function () {
+    banner.classList.remove('is-visible');
+    setTimeout(function () { banner.style.display = 'none'; }, 400);
+  });
+})();
+</script>
+
+</body>
+</html>
